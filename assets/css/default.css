@@ -1,0 +1,2486 @@
+@import url('https://fonts.googleapis.com/css2?family=Imprima&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+:root{
+    --main-color: #DC9FCF;
+    --main-medium: #C18BB5;
+    --main-darker: #6E5068;
+    --theme-grey: #D9D9D9;
+    --margin: 20px;
+    scroll-behavior: smooth;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Imprima', sans-serif;
+}
+body{
+    min-height: 100vh;
+}
+.green{
+    --main-color: lightgreen;
+    --main-medium: green;
+    --main-darker: darkgreen;
+}
+/*-------------------------------------------------------------------------------Menu Header-------------------------------------------------------------------------*/
+header{
+    height: 95px;
+    width: 100vw;
+    background-color: var(--main-color);
+    color: white;
+    border-bottom-left-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header  h1 {
+    transform: translateX(3vw);
+}
+header .site_name h1{
+    transition: all .2s;
+}
+header .site_name h1:hover{
+    transform: scale(1.1) translateX(3vw);
+}
+body header  h1 a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Gamja Flower', cursive;
+    font-size: 40px;
+}
+header nav {
+    display: flex;
+}
+header nav img{
+    width: 68px;
+}
+header nav img,
+header nav .burger{
+    cursor: pointer;
+}
+header nav .notification_container,
+header nav .messenger_container{
+    position: relative;
+}
+
+header nav .notification_container,
+header nav .messenger_container,
+header nav .imageProfil_container{
+    transition: all .2s;
+}
+header nav .notification_container:hover,
+header nav .messenger_container:hover,
+header nav .imageProfil_container:hover{
+    transform: translateY(-10px);
+}
+header nav .notif_redball_container,
+header nav .messenger_redball_container{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+header nav .imageProfil_container{
+    padding: 0 5px;
+}
+header nav .imageProfil_container img{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+}
+header nav .burger_container{
+    padding: 0 10px;
+}
+header nav .burger{
+    width: 68px;
+    height: 68px;
+    background-color: white;
+    border-radius: 15px;
+}
+header .rechercher_container{
+    position: relative;
+    animation: rechercher 5s linear infinite;
+}
+header .rechercher_container a:hover{
+    background-color: var(--main-darker);
+    color: white;
+}
+header .rechercher_container a{
+    /* Réinitialiser les styles */
+    appearance: none;
+    text-decoration: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 5px 10px;
+    margin: 0;
+    /**/
+    height: 35px;
+    border-radius: 1.5em;
+    /* width: 20vw; */
+    background-color: white;
+    font-size: 24px;
+    color: var(--main-darker);
+    text-align: left;
+    text-indent: 15px;
+    position: relative;
+    z-index: 3;
+    transition: all .3s;
+}
+/**********************************************************************************Gestion des Menus de la NavBar****************************************************************************************/
+.notification_menu{
+    display: none;
+}
+.notification_menu .menu_menu_notification{
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-color: var(--main-darker);
+    z-index: 2;
+    top: 100px;
+    right: 5px;
+    border-radius: 15px;
+     /* Gérer le contenu à l'intérieur de la div*/
+     padding: 25px;
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+     gap: 50px;
+     align-items: center;
+}
+.notification_menu .triangle_menu_notification{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent; /* Moitié de la largeur */
+    border-right: 15px solid transparent; /* Moitié de la largeur */
+    border-bottom: 30px solid var(--main-darker); /* Hauteur */
+    z-index: 2;
+    top: calc(100px - 30px); /* Décalage de la div moins hauteur du triangle */
+    right: 255px;
+}
+
+.messenger_menu{
+  display: none;
+}
+.messenger_menu .menu_menu_messenger{
+    position: absolute;
+    width: 350px;
+    min-height: 350px;
+    max-height: 830px;
+    background-color: var(--main-darker);
+    z-index: 2;
+    top: 100px;
+    right: 5px;
+    border-radius: 15px;
+     /* Gérer le contenu à l'intérieur de la div*/
+     padding: 25px;
+     display: flex;
+     justify-content: flex-start;
+     flex-direction: column;
+     gap: 20px;
+     align-items: center;
+}
+.messenger_menu .triangle_menu_messenger{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent; /* Moitié de la largeur */
+    border-right: 15px solid transparent; /* Moitié de la largeur */
+    border-bottom: 30px solid var(--main-darker); /* Hauteur */
+    z-index: 2;
+    top: calc(100px - 30px); /* Décalage de la div moins hauteur du triangle */
+    right: 185px;
+}
+.messenger_menu .messenger_conversation_list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.messenger_menu .conversation_row{
+    display: flex;
+    gap: 15px;
+    max-height: 100px;
+    overflow: hidden;
+    word-break: break-word;
+}
+.messenger_menu .conversation_row .unread{
+    font-weight: 900;
+    font-style: italic;
+}
+.messenger_menu .conversation_row img{
+    height: 60px;
+    width: 60px;
+    border: 1px solid white;
+    border-radius: 50%;
+ }
+.profil_menu{
+    display: none;
+}
+.profil_menu .menu_menu_profil{
+    position: absolute;
+    min-width: 350px;
+    height: 350px;
+    background-color: var(--main-darker);
+    z-index: 2;
+    top: 100px;
+    right: 5px;
+    border-radius: 15px;
+    /* Gérer le contenu à l'intérieur de la div*/
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+.profil_menu .triangle_menu_profil{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent; /* Moitié de la largeur */
+    border-right: 15px solid transparent; /* Moitié de la largeur */
+    border-bottom: 30px solid var(--main-darker); /* Hauteur */
+    z-index: 2;
+    top: calc(100px - 30px); /* Décalage de la div moins hauteur du triangle */
+    right: 110px;
+}
+
+
+
+.hamburger_menu{
+    display: none;
+}
+.hamburger_menu .menu_menu_hamburger{
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background-color: var(--main-darker);
+    z-index: 2;
+    top: 100px;
+    right: 5px;
+    border-radius: 15px;
+    /* Gérer le contenu à l'intérieur de la div*/
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+.hamburger_menu .triangle_menu_hamburger{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent; /* Moitié de la largeur */
+    border-right: 15px solid transparent; /* Moitié de la largeur */
+    border-bottom: 30px solid var(--main-darker); /* Hauteur */
+    z-index: 2;
+    top: calc(100px - 30px); /* Décalage de la div moins hauteur du triangle */
+    right: 30px;
+}
+.menu_row{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+.menu_row img{
+    height: 30px;
+    width: 30px;
+}
+.menu_row a{
+    text-decoration: none;
+    color: white;
+}
+.menu_bottom{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background-color: var(--main-medium);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu_bottom a{
+    text-decoration: none;
+    color: white;
+}
+
+.menu_menu_messenger .menu_messenger_div_recherche{
+    position: relative;
+  
+}
+
+.menu_menu_messenger .menu_messenger_div_recherche input{
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    height: 30px;
+    border-radius: 1.5em;
+    /* width: 20vw; */
+    background-color: white;
+    font-size: 24px;
+    color: var(--main-darker);
+    text-align: left;
+    text-indent: 15px;
+    position: relative;
+}
+.menu_menu_messenger .menu_messenger_icone_recherche{
+    width: 25px;
+    height: auto;
+    position: absolute;
+    bottom: 3px;
+    right: 5px;
+    cursor: pointer;
+}
+/**********************************************************************************Fin Gestion des Menus de la NavBar****************************************************************************************/
+/***********************************************************************************fin header**************************************************************************/
+
+
+                                                                                        /**/
+
+
+
+/***********************************************************************************Page mur************************************************************************************/
+body{
+    background-color: #D9D9D9;
+}
+.content_container{
+    display: flex;
+    min-height: calc(100vh - 95px);
+
+}
+body .content_container .left_aside_mur{
+    min-width: 15vw;
+    background-color: #D9D9D9;
+}
+/**********************************************************************************Debut Main Mur****************************************************************************************/
+body .content_container main{
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+body .content_container main .poster{ 
+    width: 90%;
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+body .content_container main .poster form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+body .content_container main .poster form .btn_poster{
+     /* Réinitialiser les styles */
+     appearance: none;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     outline: none;
+     box-shadow: none;
+     border-radius: 0;
+     border: none;
+     padding: 0;
+     margin: 0;
+     /**/
+     border-radius: 1.5em;
+     background-color: var(--main-darker);
+     color: white;
+     cursor: pointer;
+     font-size: 16px;
+     height: 30px;
+     width: 60px;
+     transition: all .3s;
+}
+body .content_container main .poster form .btn_poster:hover{
+    background-color: white;
+     color: var(--main-darker);
+}
+body .content_container main .poster img{ 
+    width: 30px;
+    align-self: flex-end;
+}
+body .content_container main .poster textarea{ 
+     /* Réinitialiser les styles */
+     appearance: none;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     outline: none;
+     box-shadow: none;
+     border-radius: 0;
+     border: none;
+     padding: 0;
+     margin: 0;
+     /**/
+     height: 30px;
+     width: 90%;
+     border-radius: 50px;
+     background-color: white;
+     font-size: 24px;
+     color: var(--main-darker);
+     text-align: left;
+     text-indent: 15px; /* Déplacer le texte d'espace réservé de 15px vers la droite */
+}
+
+body .content_container main .fil{
+    width: 90%;
+}
+body .content_container main .fil .post_wrapper{
+    width: 100%;
+    position: relative;
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    margin-bottom: var(--margin);
+    display: flex;
+    flex-direction: column;
+}
+body .content_container main .fil .post_wrapper .post_container .post_infos{
+    position: relative;
+    max-height: 90px;
+}
+body .content_container main .fil .post_wrapper .post_container .post_infos .profil_img{
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  border: solid 2px white;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  object-fit: cover;
+}
+body .content_container main .fil .post_wrapper .post_container .post_infos .post_infos_titre{
+    position: relative;
+    width: fit-content;
+    top: 10px;
+    left: 85px;
+    font-size: 20px;
+    transform: translateY(-70px);
+}
+body .content_container main .fil .post_wrapper .post_container .post_infos .post_infos_date{
+    position: relative;
+    top: 10px;
+    left: 85px;
+    transform: translateY(-70px);
+}
+body .content_container main .fil .post_wrapper .post_container .div_contenu_post{
+    margin: 0 85px 10px 85px;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--main-darker);
+    word-break: break-word; /* Ajouter cette propriété pour forcer les mots à se diviser */
+  }
+body .content_container main .fil .post_wrapper .icones_container{
+    margin-right: 75px;
+    padding: 10px;
+    align-self: flex-end;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+body .content_container main .fil .post_wrapper .commenter_container,
+body .content_container main .fil .post_wrapper .commenter_container_response {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+body .content_container main .fil .post_wrapper .commenter_container_response {
+width: 100%;
+}
+body .content_container main .fil .post_wrapper .commenter_container textarea,
+body .content_container main .fil .post_wrapper .commenter_container_response textarea {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    height: 90px;
+    width: 70%;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 24px;
+    color: var(--main-darker);
+    text-align: left;
+    text-indent: 15px;
+}
+body .content_container main .fil .post_wrapper .commenter_container button,
+body .content_container main .fil .post_wrapper .commenter_container_response button{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0 10px;
+    margin: 0;
+    border-radius: 1.5em;
+    background-color: var(--main-darker);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    height: 30px;
+    width: fit-content;
+}
+
+/***********************************************Form pour editer post*/
+body .content_container main .fil .post_wrapper .div_contenu_post form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+body .content_container main .fil .post_wrapper .div_contenu_post textarea{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    height: 90px;
+    width: 70%;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 24px;
+    color: var(--main-darker);
+    text-align: left;
+    text-indent: 15px;
+}
+body .content_container main .fil .post_wrapper .div_contenu_post button{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0 10px;
+    margin: 0;
+    border-radius: 1.5em;
+    background-color: white;
+    color: var(--main-darker);
+    cursor: pointer;
+    font-size: 16px;
+    height: 30px;
+    width: fit-content;
+}
+/*********************************************** fin Form pour editer post*/
+/***********************************Style pour la div section_commentaire *************************************/
+/* body .content_container main .fil .post_wrapper .section_commentaire{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .section_titre{
+    text-align: center;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .commentaire_row_container{
+    position: relative;
+    height: auto;
+    min-height: 120px;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .profil_img{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: solid 2px white;
+    position: absolute;
+    top: 10px;
+    left: 200px;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .commentaire_infos_titre{
+    position: absolute;
+    width: fit-content;
+    top: 13px;
+    left: 275px;
+    font-size: 20px;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .commentaire_infos_date{
+    position: absolute;
+    top: 36px;
+    left: 275px;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .icone_confidentialite{
+    width: 16px;
+    height: auto;
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    transform: translateY(-50%);
+  
+}
+body .content_container main .fil .post_wrapper .section_commentaire .div_contenu_commentaire{
+    color: white;
+    background-color: var(--main-darker);
+    position: relative;
+    top: 25px;
+    left: 400px;
+    padding: 10px;
+    width: 470px;
+    border-radius: 5px;
+    height: auto;
+    margin-bottom: 50px;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .icones_container_commentaire{
+    padding: 0 85px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    position: relative;
+    bottom: 0px;
+    right: -580px;
+   
+} */
+body .content_container main .fil .post_wrapper .section_commentaire{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: white;
+    margin: 10px;
+    margin-left: 15%;
+    border-radius: 15px;
+    max-height: 1000px;
+    overflow: scroll;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .section_titre{
+    text-align: center;
+    padding: 20px;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .commentaire_row_container{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 25px;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .profil_img{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: solid 2px white;
+    object-fit: cover;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .commentaire_info{
+   display: flex;
+   gap: 5px;
+   transform: scale(90%);
+   width: 200px;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .commentaire_infos_titre{
+    font-size: 20px;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .icone_confidentialite{
+    width: 16px;
+    height: auto;
+    position: absolute;
+    right: 20px;
+    top: 0; 
+    margin-left: auto;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .icones_container_commentaire{
+    padding: 10px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+
+} 
+body .content_container main .fil .post_wrapper .section_commentaire .div_contenu_commentaire{
+    color: white;
+    background-color: var(--main-darker);
+    padding: 10px;
+    border-radius: 5px;
+    height: auto;
+    width: 80%;
+    margin: 0 auto;
+}
+/* body .content_container main .fil .post_wrapper .section_commentaire .sort_down{
+    width: 20px;
+    height: auto;
+} */
+  
+/**********************************Fin Style pour la div section_commentaire**************************************/
+/******************************************************* Section Reponse **************************************************************/
+body .content_container main .fil .post_wrapper .section_commentaire .section_reponse{
+    /* border: 2px solid var(--main-darker); */ 
+    /* Ajouter apres */
+    border-radius: 15px;
+    /* margin: 2%;
+    margin-left: 10%; */
+    width: 100%;
+    max-height: 1000px;
+    overflow: scroll;
+}
+body .content_container main .fil .post_wrapper .section_commentaire .section_reponse .icones_container_commentaire{
+    padding: 10px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+  
+} 
+body .content_container main .fil .post_wrapper .section_commentaire .section_reponse .div_contenu_commentaire{
+    width: 90%;
+    margin: 0 auto;
+} 
+body .content_container main .fil .post_wrapper .section_commentaire .section_reponse .commentaire_info{
+   transform: scale(80%);
+}
+.section_reponse .icone_confidentialite{
+    top: 0;
+}
+/**************************************************************************************************************************************/
+body .content_container main .fil .post_wrapper .post_infos .icone_confidentialite {
+    width: 16px;
+    height: auto;
+    position: absolute;
+    right: 10px;
+    top: 30%;
+    transform: translateY(-50%);
+}
+
+body .content_container main .fil .post_wrapper .ico_down{
+    width: 20px;
+    height: auto;
+    transform: translateY(8px);
+    cursor: pointer;
+}
+.logo{
+    width: auto;
+    height: 50px;
+
+}
+.logo_wrapper{
+    display: flex;
+    align-items: center;
+}
+.fil .contenu_post{
+    overflow-wrap: break-word;
+}
+.ico_post{
+    width: 20px;
+    height: auto;
+}
+.ico_post:hover{
+    cursor: pointer;
+}
+/**********************************************************************************Fin Main****************************************************************************************/
+/**********************************************************************************Debut Contacts****************************************************************************************/
+body .content_container .contacts{
+    width: 30vw;
+    background-color: #D9D9D9;
+    font-size: 24px;
+    font-weight: 900;
+    padding: 10px;
+}
+body .content_container .contacts .contacts_icone_courrier{
+    width: 70px;
+    height: auto;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+body .content_container input{
+     /* Réinitialiser les styles */
+     appearance: none;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     outline: none;
+     box-shadow: none;
+     border-radius: 0;
+     border: none;
+     padding: 0;
+     margin: 0;
+     /**/
+     height: 30px;
+     border-radius: 1.5em;
+     width: 20vw;
+     background-color: white;
+     font-size: 24px;
+     color: var(--main-darker);
+     text-align: left;
+     text-indent: 15px;
+     position: relative;
+}
+body .content_container .contacts .section_contacts_rechercher_container{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    /* position: sticky; */
+    top: 10px;
+}
+body .content_container .contacts .contacts_div_recherche{
+    position: relative;
+    width: 20vw;
+}
+body .content_container .contacts .contacts_icone_recherche{
+    width: 25px;
+    height: auto;
+    position: absolute;
+    bottom: 3px;
+    right: 5px;
+    cursor: pointer;
+}
+body .content_container .contacts .contact_list{
+   margin-top: 35px;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+}
+
+body .content_container .contacts .contact_row{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+body .content_container .contacts .contact_row .image_profil{
+    height: 50px;
+    width: 50px;
+    border: solid 2px white;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/**********************************************************************************Fin Contacts****************************************************************************************/
+/***********************************************************************************Fin page mur************************************************************************************/
+
+
+
+
+
+/***********************************************************************************Début page Profil************************************************************************************/
+body .profil_page_container{
+    display: flex;
+}
+body .profil_page_container .left_aside,
+body .profil_page_container .right_aside{
+    min-width: 15vw;
+    background-color: #D9D9D9;
+}
+body .page_profil_profil{
+    min-width: 70vw;
+    position: relative;
+    min-height: 600px;
+    margin-top: 25px;
+}
+body .page_profil_profil .border{
+    width: 70vw;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 15px;
+    position: absolute;
+}
+body .page_profil_profil .border img{
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: 15px;
+    transform: translateY(-330px);
+}
+body .page_profil_profil .profil{
+    max-width: 125px;
+    margin: 0 auto; /* Centrer l'image horizontalement */
+    position: absolute;
+    top: 330px;
+    left: 0;
+ }
+ body .page_profil_profil .profil img{
+    height:125px;
+    width: 125px;
+    border-radius: 50%;
+    border: 5px solid white;
+    object-fit: cover;
+ }
+body .page_profil_profil .details{
+    position: absolute;
+    top: 370px;
+    left: 140px;
+}
+body .page_profil_profil .details .names{
+   font-size: 20px;
+}
+body .page_profil_profil .btn_modifier_profil{
+    position: absolute;
+    top: 380px;
+    right: 0;
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    height: 60px;
+    width: 220px;
+    border-radius: 50px;
+    background-color: var(--main-color);
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+}
+body .page_profil_profil .btn_suivre{
+    position: absolute;
+    top: 380px;
+    right: 280px;
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    height: 60px;
+    width: 220px;
+    border-radius: 50px;
+    background-color: var(--main-color);
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+}
+body .page_profil_profil .btn_stop_suivre{
+    position: absolute;
+    top: 380px;
+    right: 280px;
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    height: 60px;
+    width: 220px;
+    border-radius: 50px;
+    background-color: var(--main-color);
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+}
+body .page_profil_profil .btn_ajouter{
+    position: absolute;
+    top: 380px;
+    right: 0;
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    height: 60px;
+    width: 260px;
+    border-radius: 50px;
+    background-color: var(--main-color);
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+    padding: 0 20px;
+}
+body .page_profil_profil .btn_pending_ami{
+    position: absolute;
+    top: 380px;
+    right: 0;
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    height: 60px;
+    width: 260px;
+    border-radius: 50px;
+    background-color: var(--main-color);
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+    padding: 0 20px;
+}
+body .page_profil_profil .btn_stop_ajouter{
+    position: absolute;
+    top: 380px;
+    right: 0;
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    height: 60px;
+    width: 260px;
+    border-radius: 50px;
+    background-color: var(--main-color);
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+    padding: 0 20px;
+}
+
+body .page_profil_profil .btn_envoyer_msg_profil{
+    position: absolute;
+    top: 380px;
+    right: 520px;
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    height: 60px;
+    width: 220px;
+    border-radius: 50px;
+    background-color: var(--main-color);
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+    padding: 0 20px;
+}
+body .page_profil_profil .btn_modifier_profil,
+body .page_profil_profil .btn_suivre,
+body .page_profil_profil .btn_stop_suivre,
+body .page_profil_profil .btn_ajouter,
+body .page_profil_profil .btn_stop_ajouter,
+body .page_profil_profil .btn_pending_ami,
+body .page_profil_profil .btn_envoyer_msg_profil{
+    transition: all .3s;
+}
+body .page_profil_profil .btn_modifier_profil:hover,
+body .page_profil_profil .btn_suivre:hover,
+body .page_profil_profil .btn_stop_suivre:hover,
+body .page_profil_profil .btn_ajouter:hover,
+body .page_profil_profil .btn_stop_ajouter:hover,
+body .page_profil_profil .btn_pending_ami:hover,
+body .page_profil_profil .btn_envoyer_msg_profil:hover{
+    background-color: white;
+    color: var(--main-color);
+}
+
+
+
+
+
+body .page_profil_profil .icone_ajouter_ami,
+body .page_profil_profil .icone_supprimer_ami,
+body .page_profil_profil .icone_pending_ami,
+body .page_profil_profil .icone_envoyer_msg{
+    height: 30px;
+    width: auto;
+}
+body .page_profil_profil .page_profil_menu{
+    display: flex;
+    position: absolute;
+    top: 500px;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 200px;
+}
+
+body .page_profil_profil .page_profil_menu a{
+    text-decoration: none;
+    color: var(--main-darker);
+    font-size: 20px;
+}
+
+body .page_profil_main{
+    width: 70vw;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    min-height: 1000px;
+}
+
+/********************************************************************************* left section *********************************************************************************/
+body .page_profil_main .left_section{
+    width: 50%;
+    background-color: white;
+    /* height: 1000px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+body .page_profil_main .left_section .page_profil_apropos{
+    background-color: var(--theme-grey);
+    width: 90%;
+    border-radius: 15px;
+    margin-top: 25px;
+}
+body .page_profil_main .left_section .page_profil_amis{
+    background-color: var(--theme-grey);
+    width: 90%;
+    border-radius: 15px;
+}
+body .page_profil_main .left_section .page_profil_photos{
+    background-color: var(--theme-grey);
+    width: 90%;
+    border-radius: 15px;
+}
+body .page_profil_main .left_section .page_profil_apropos,
+body .page_profil_main .left_section .page_profil_amis,
+body .page_profil_main .left_section .page_profil_photos{
+    min-height: 150px;
+    padding: 25px;
+}
+body .page_profil_main .left_section .page_profil_apropos h3,
+body .page_profil_main .left_section .page_profil_amis h3,
+body .page_profil_main .left_section .page_profil_photos h3{
+    text-align: center;
+}
+body .page_profil_main .left_section .page_profil_apropos a,
+body .page_profil_main .left_section .page_profil_amis a,
+body .page_profil_main .left_section .page_profil_photos a{
+    width: 100%;
+    display: block;
+    text-align: right;
+    text-decoration: none;
+    color: var(--main-darker);
+}
+
+body .page_profil_main .left_section .page_profil_amis .friend_container{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 30px 0;
+}
+body .page_profil_main .left_section .page_profil_amis .friend_container .friend_card a{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+body .page_profil_main .left_section .page_profil_amis .friend_container .friend_card a img{
+    border-radius: 15px;
+    height: 150px;
+    width: 150px;
+}
+body .page_profil_main .left_section .page_profil_amis .friend_container .friend_card a h4{
+    font-size: 16px;
+}
+
+/********************************************************************************* fin left section *********************************************************************************/
+
+/********************************************************************************* right section *********************************************************************************/
+
+body .page_profil_main .right_section{
+    width: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+/*Poster*/
+body .page_profil_main .right_section .page_profil_poster{ 
+    width: 90%;
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    margin-top: 25px;
+}
+body .page_profil_main .right_section .page_profil_poster form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+body .page_profil_main .right_section .page_profil_poster form .btn_poster{
+     /* Réinitialiser les styles */
+     appearance: none;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     outline: none;
+     box-shadow: none;
+     border-radius: 0;
+     border: none;
+     padding: 0;
+     margin: 0;
+     /**/
+     border-radius: 1.5em;
+     background-color: var(--main-darker);
+     color: white;
+     cursor: pointer;
+     font-size: 16px;
+     height: 30px;
+     width: 60px;
+     transition: all .3s;
+}
+body .page_profil_main .right_section .page_profil_poster form .btn_poster:hover{
+    background-color: white;
+     color: var(--main-darker);
+}
+body .page_profil_main .right_section .page_profil_poster img{ 
+    width: 30px;
+    align-self: flex-end;
+}
+body .page_profil_main .right_section .page_profil_poster textarea{ 
+     /* Réinitialiser les styles */
+     appearance: none;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     outline: none;
+     box-shadow: none;
+     border-radius: 0;
+     border: none;
+     padding: 0;
+     margin: 0;
+     /**/
+     height: 30px;
+     width: 90%;
+     border-radius: 50px;
+     background-color: white;
+     font-size: 24px;
+     color: var(--main-darker);
+     text-align: left;
+     text-indent: 15px; /* Déplacer le texte d'espace réservé de 15px vers la droite */
+}
+/* Fil */
+body .page_profil_main .right_section .page_profil_fil{
+    width: 90%;
+    margin-bottom: 25px;
+    /* overflow: scroll; */
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper{
+    width: 100%;
+    position: relative;
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--margin);
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .post_container .post_infos{
+    position: relative;
+    max-height: 90px;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .post_container .post_infos .profil_img{
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  border: solid 2px white;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  object-fit: cover;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .post_container .post_infos .post_infos_titre{
+    position: relative;
+    width: fit-content;
+    top: 10px;
+    left: 85px;
+    font-size: 20px;
+    transform: translateY(-70px);
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .post_container .post_infos .post_infos_date{
+    position: relative;
+    top: 10px;
+    left: 85px;
+    transform: translateY(-70px);
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .post_container .div_contenu_post{
+    margin: 0 85px 10px 85px;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--main-darker);
+    word-break: break-word; /* Ajouter cette propriété pour forcer les mots à se diviser */
+  }
+  body .page_profil_main .right_section .page_profil_fil .post_wrapper .post_infos .icone_confidentialite {
+    width: 16px;
+    height: auto;
+    position: absolute;
+    right: 10px;
+    top: 30%;
+    transform: translateY(-50%);
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .commenter_container,
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .commenter_container_response {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .commenter_container_response {
+   width: 100%;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .commenter_container textarea,
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .commenter_container_response textarea{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    height: 90px;
+    width: 70%;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 24px;
+    color: var(--main-darker);
+    text-align: left;
+    text-indent: 15px;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .commenter_container button,
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .commenter_container_response button{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0 10px;
+    margin: 0;
+    border-radius: 1.5em;
+    background-color: var(--main-darker);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    height: 30px;
+    width: fit-content;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .ico_down{
+    width: 20px;
+    height: auto;
+    transform: translateY(8px);
+    cursor: pointer;
+}
+/***********************************************Form pour editer post*/
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .div_contenu_post form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .div_contenu_post textarea{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    height: 90px;
+    width: 70%;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 24px;
+    color: var(--main-darker);
+    text-align: left;
+    text-indent: 15px;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .div_contenu_post button{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0 10px;
+    margin: 0;
+    border-radius: 1.5em;
+    background-color: white;
+    color: var(--main-darker);
+    cursor: pointer;
+    font-size: 16px;
+    height: 30px;
+    width: fit-content;
+}
+/*********************************************** fin Form pour editer post*/
+  body .page_profil_main .right_section .page_profil_fil .post_wrapper .icones_container{
+    margin-right: 75px;
+    padding: 10px;
+    align-self: flex-end;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+/***********************************Style pour la div section_commentaire *************************************/
+
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .section_commentaire{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: white;
+    margin: 10px;
+    margin-left: 15%;
+    border-radius: 15px;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .section_commentaire .section_titre{
+    text-align: center;
+    padding: 20px;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .section_commentaire .commentaire_row_container{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 25px;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .section_commentaire .profil_img{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: solid 2px white;
+    object-fit: cover;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .section_commentaire .commentaire_info{
+   display: flex;
+   gap: 5px;
+   transform: scale(90%);
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .section_commentaire .commentaire_infos_titre{
+    font-size: 20px;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .section_commentaire .icone_confidentialite{
+    width: 16px;
+    height: auto;
+    position: absolute;
+    right: 50px;
+    top: 0; 
+    margin-left: auto;
+}
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .section_commentaire .icones_container_commentaire{
+    padding: 10px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    margin-left: 30%;
+} 
+body .page_profil_main .right_section .page_profil_fil .post_wrapper .section_commentaire .div_contenu_commentaire{
+    color: white;
+    background-color: var(--main-darker);
+    padding: 10px;
+    border-radius: 5px;
+    height: auto;
+    width: 80%;
+    margin: 0 auto;
+}
+
+  
+/**********************************Fin Style pour la div section_commentaire**************************************/
+/********************************************************************************* fin right section *********************************************************************************/
+
+/***********************************************************************************Fin page Profil************************************************************************************/
+
+/***********************************************************************************Début page Parametres************************************************************************************/
+body .page_parametres{
+    display: flex;
+    min-height: calc(100vh - 95px); /* 95px Hauteur du header */
+}
+body .page_parametres main{
+    width: 60vw;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+body .page_parametres main .titre h2{
+   font-size: 2.5em;
+}
+body .page_parametres main .parametres_content{
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    
+}
+body .page_parametres main .parametres_content .parametres_row{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    
+}
+body .page_parametres main .parametres_content .parametres_row .parametres_row_titre{
+   transform: translateX(50px);
+   font-size: 20px;
+    
+}
+body .page_parametres main .parametres_content .parametres_row .parametres_row_content{
+    transform: translateX(-50px);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+body .page_parametres main .parametres_content .parametres_row .parametres_row_content img{
+   width: 30px;
+   height: 30px;
+    
+}
+body .page_parametres main .parametres_content .parametres_row .parametres_row_content select{
+  /* Réinitialiser les styles */
+  /* appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none; */
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  /**/
+  height: 30px;
+  width: 90%;
+  border-radius: 50px;
+  background-color: white;
+  border: 2px solid var(--main-darker);
+  padding: 0 10px;
+  font-size: 16px;
+  color: var(--main-darker);
+  text-align: center;
+  cursor: pointer;
+}
+
+
+/********************************************************************************* left section *********************************************************************************/
+body .page_parametres .left_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin left section *********************************************************************************/
+
+/********************************************************************************* right section *********************************************************************************/
+
+body .page_parametres .right_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin right section *********************************************************************************/
+
+/***********************************************************************************Fin page Parametres************************************************************************************/
+
+/***********************************************************************************Début page Amis************************************************************************************/
+body .page_amis{
+    display: flex;
+    min-height: calc(100vh - 95px); /* 95px Hauteur du header */
+}
+body .page_amis main{
+    width: 60vw;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+body .page_amis main .titre h2{
+   font-size: 2.5em;
+}
+body .page_amis main .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+ }
+ body .page_amis main .content .content_row{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+ }
+ body .page_amis main .content .content_row .pseudo{
+    font-size: 24px;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--main-darker);
+ }
+ body .page_amis main .content .content_row .btn_container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+ }
+ body .page_amis main .content .content_row .btn_voir_profil,
+ body .page_amis main .content .content_row .btn_suivre,
+ body .page_amis main .content .content_row .btn_stop_suivre,
+ body .page_amis main .content .content_row .btn_ajouter,
+ body .page_amis main .content .content_row .btn_pending_ami,
+ body .page_amis main .content .content_row .btn_stop_ajouter{
+    /* Réinitialiser les styles */
+   appearance: none;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   outline: none;
+   box-shadow: none;
+   border-radius: 0;
+   border: none;
+   padding: 0;
+   margin: 0;
+   /**/
+   height: 40px;
+   width: 200px;
+   border-radius: 50px;
+   background-color: var(--main-color);
+   color: white;
+   cursor: pointer;
+   font-size: 20px;
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   text-decoration: none;
+   text-align: center;
+   padding: 0 10px;
+ }
+
+ body .page_amis main .content .content_row .image_profil{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+ }
+
+ body .page_amis main .content .content_row a img{
+    height: 30px;
+    width: 30px;
+ }
+ 
+ 
+
+
+
+/********************************************************************************* left section *********************************************************************************/
+body .page_amis .left_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin left section *********************************************************************************/
+
+/********************************************************************************* right section *********************************************************************************/
+
+body .page_amis .right_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin right section *********************************************************************************/
+
+/***********************************************************************************Fin page Amis************************************************************************************/
+
+/***********************************************************************************Début page A Propos************************************************************************************/
+body .page_apropos{
+    display: flex;
+    min-height: calc(100vh - 95px); /* 95px Hauteur du header */
+}
+body .page_apropos main{
+    width: 60vw;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+body .page_apropos main .titre h2{
+   font-size: 2.5em;
+}
+
+
+
+/********************************************************************************* left section *********************************************************************************/
+body .page_apropos .left_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin left section *********************************************************************************/
+
+/********************************************************************************* right section *********************************************************************************/
+
+body .page_apropos .right_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin right section *********************************************************************************/
+
+/***********************************************************************************Fin page A Propos************************************************************************************/
+
+
+/***********************************************************************************Début page Photos************************************************************************************/
+body .page_photos{
+    display: flex;
+    min-height: calc(100vh - 95px); /* 95px Hauteur du header */
+}
+body .page_photos main{
+    width: 60vw;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+body .page_photos main .titre h2{
+   font-size: 2.5em;
+}
+
+
+
+/********************************************************************************* left section *********************************************************************************/
+body .page_photos .left_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin left section *********************************************************************************/
+
+/********************************************************************************* right section *********************************************************************************/
+
+body .page_photos .right_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin right section *********************************************************************************/
+
+/***********************************************************************************Fin page A Photos************************************************************************************/
+/*****************************************************************************Page editer profil ****************************************************/
+body .page_profil_edit{
+    display: flex;
+    min-height: calc(100vh - 95px); /* 95px Hauteur du header */
+}
+body .page_profil_edit main{
+    width: 60vw;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+body .page_profil_edit main .titre h2{
+   font-size: 2.5em;
+}
+body .page_profil_edit main .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+body .page_profil_edit main .content .content_image_profil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+body .page_profil_edit main .content .content_image_profil label{
+    font-size: 20px;
+}
+body .page_profil_edit main .content .content_image_profil img{
+    border-radius: 15px;
+    max-width: 500px;
+    height: auto;
+}
+body .page_profil_edit main .content form{
+    display: flex;
+    flex-direction: column;
+}
+body .page_profil_edit main .content form button{
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    background-color: var(--main-darker);
+    cursor: pointer;
+    border-radius: 0.5em;
+  
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+       font-size: 20px;
+}
+body .page_profil_edit main .content .content_row{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+body .page_profil_edit main .content .content_row label{
+    font-size: 20px;
+}
+body .page_profil_edit main .content .content_row input{
+        /* Réinitialiser les styles */
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        box-shadow: none;
+        border-radius: 0;
+        border: none;
+        padding: 0;
+        margin: 0;
+        /**/
+        height: 30px;
+        border-radius: 1.5em;
+        max-width: 300px;
+        min-width: 30vw;
+        background-color: white;
+        font-size: 20px;
+        border: solid 2px var(--main-darker);
+        text-align: left;
+        text-indent: 15px;
+        position: relative;
+}
+body .page_profil_edit main .content a{
+    text-decoration: none;
+    color: var(--main-darker);
+    font-size: 20px;
+}
+ /********************************************************************************* left section *********************************************************************************/
+body .page_profil_edit .left_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin left section *********************************************************************************/
+
+/********************************************************************************* right section *********************************************************************************/
+
+body .page_profil_edit .right_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin right section *********************************************************************************/
+
+/*****************************************************************************************************************************************************/
+/*****************************************************************************Page rechercher amis ****************************************************/
+body .page_chercher_amis{
+    display: flex;
+    min-height: calc(100vh - 95px); /* 95px Hauteur du header */
+}
+body .page_chercher_amis main{
+    width: 60vw;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+body .page_chercher_amis main .titre h2{
+   font-size: 2.5em;
+}
+body .page_chercher_amis main .content{
+    width: 90%;
+ }
+body .page_chercher_amis main .content .search_friend_div{
+    margin: 10px;
+}
+body .page_chercher_amis main .content .search_friend_div form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+body .page_chercher_amis main .content .search_friend_div form input[type="text"] {
+        /* Réinitialiser les styles */
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        box-shadow: none;
+        border-radius: 0;
+        border: none;
+        padding: 0;
+        margin: 0;
+        /**/
+        border: solid 2px var(--main-color);
+        border-radius: 1.5em;
+        width: 300px;
+        padding: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+body .page_chercher_amis main .content .search_friend_div form button {
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    background-color: var(--main-color);
+    cursor: pointer;
+    border-radius: 0.5em;
+    width: 80px;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+}
+
+body .page_chercher_amis main .content .image_profil{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    border: 2px solid var(--main-color);
+    object-fit: cover;
+}
+body .page_chercher_amis main .content  table {
+    width: 100%; /* Pour que le tableau occupe toute la largeur disponible */
+    border-collapse: collapse; /* Pour fusionner les bordures des cellules */
+}
+
+body .page_chercher_amis main .content td {
+    text-align: center; /* Pour centrer le contenu dans les cellules */
+    padding: 5px; /* Ajoutez un peu d'espace autour du contenu */
+}
+body .page_chercher_amis main .content th {
+    padding: 15px; /* Ajoutez un peu d'espace autour du contenu */
+    font-size: 20px;
+}
+body .page_chercher_amis main .content td > div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+    font-size: 20px;
+    font-weight: 800;
+    margin-right: 10px;
+}
+body .page_chercher_amis main .content td > a{
+   text-decoration: none;
+    color: var(--main-darker);
+    cursor: pointer;
+}
+body .page_chercher_amis main .content .image_tri{
+    height: 20px;
+    width: 20px;
+    transform: translateY(3px);
+ }
+ /********************************************************************************* left section *********************************************************************************/
+body .page_chercher_amis .left_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin left section *********************************************************************************/
+
+/********************************************************************************* right section *********************************************************************************/
+
+body .page_chercher_amis .right_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin right section *********************************************************************************/
+
+/*****************************************************************************************************************************************************/
+
+/*****************************************************************************Page Messenger ****************************************************/
+body .page_messenger{
+    display: flex;
+    min-height: calc(100vh - 95px); /* 95px Hauteur du header */
+}
+body .page_messenger main{
+    width: 60vw;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+body .page_messenger main .titre h2{
+   font-size: 2.5em;
+}
+body .page_messenger main .content{
+    width: 90%;
+ }
+ 
+ /********************************************************************************* left section *********************************************************************************/
+body .page_messenger .left_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin left section *********************************************************************************/
+
+/********************************************************************************* right section *********************************************************************************/
+
+body .page_messenger .right_aside{
+    width: 20vw;
+    background-color: var(--theme-grey);
+}
+/********************************************************************************* fin right section *********************************************************************************/
+
+/*****************************************************************************************************************************************************/
+/* Styles CSS pour la boîte de dialogue de messagerie instantanée */
+.message-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 350px;
+    height: 350px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    z-index: 999;
+}
+.message-popup .close-button{
+    font-size: 32px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: white;
+    cursor: pointer;
+}
+.message-popup h2{
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+.message-popup .msg_response{
+    color: white;
+}
+.message-popup .conversation_msg{
+    max-height: 250px;
+    overflow: scroll;
+}
+.message-popup .conversation_msg img{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    border: solid 1px white;
+}
+.message-popup .conversation_msg{
+   color: white;
+   min-height: 250px;
+}
+.message-popup .conversation_msg .msg_row{
+    display: flex;
+    gap: 10px;
+    margin: 5px;
+ }
+.message-popup .conversation_msg .my_msg{
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+}
+.message-popup .conversation_msg .my_msg div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.message-popup .conversation_msg .my_msg div h4{
+    width: 100%;
+    text-align: right;
+}
+.message-popup .conversation_msg .my_msg div p,
+.message-popup .conversation_msg .msg_row div p{
+    word-break: break-all;
+    max-width: 200px;
+}
+.message-popup .conversation_msg .msg_row div p{
+    background-color: var(--main-darker);
+    min-width: 50px;
+    border-radius: 15px;
+    padding: 2px;
+}
+.message-popup .conversation_msg .my_msg div p{
+    background-color: var(--main-color);
+    text-align: right;
+    min-width: 50px;
+    border-radius: 15px;
+    padding: 5px;
+}
+.message-popup .bottom_div{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+}
+.message-popup .bottom_div button{
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    background-color: var(--main-color);
+    cursor: pointer;
+    border-radius: 0.5em;
+    width: 35px;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.message-popup .bottom_div textarea{
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+   border-radius: 15px;
+   padding: 5px;
+}
+.message-popup .bottom_div img{
+   height: 20px;
+   width: 20px;
+ }
+.message-popup .conversation_msg .no_msg{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+}
+
+/********************************************************************************************Media queries ****************************************************************************************/
+@media (max-width: 800px) {
+    body .content_container .contacts {
+        display: none;
+        width: 0;
+    }
+    body header{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        gap: 20px;
+    }
+    body .parametres_content{
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    body .page_parametres main .parametres_content .parametres_row{
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    body .parametres_content .parametres_row .parametres_row_content,
+    body .parametres_content .parametres_row .parametres_row_titre{
+       transform: translateX(0);
+    }
+    body .page_profil_profil .page_profil_menu{
+        gap: 15px;
+    }
+    body .profil_page_container main .page_profil_main{
+        display: flex;
+        flex-direction: column;
+    }
+    body .profil_page_container main .page_profil_main .left_section,
+    body .profil_page_container main .page_profil_main .right_section{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1500px) {
+    body .content_container .left_aside_mur {
+        min-width: 0vw;
+        width: 0;
+    }
+    body .content_container .contacts {
+        width: 40vw;
+    }
+    body .profil_page_container .left_aside,
+    body .page_parametres .left_aside,
+    body .page_amis .left_aside,
+    body .page_apropos .left_aside,
+    body .page_photos .left_aside,
+    body .page_profil_edit .left_aside,
+    body .page_chercher_amis .left_aside,
+    body .page_messenger .left_aside,
+    body .profil_page_container .right_aside,
+    body .page_parametres .right_aside,
+    body .page_amis .right_aside,
+    body .page_apropos .right_aside,
+    body .page_photos .right_aside,
+    body .page_profil_edit .right_aside,
+    body .page_chercher_amis .right_aside,
+    body .page_messenger .right_aside{
+        width: 0;
+        display: none;
+    }
+    body .page_parametres main,
+    body .page_chercher_amis main,
+    body .profil_page_container main .page_profil_main,
+    body .profil_page_container main,
+    body .page_photos main,
+    body .page_apropos main,
+    body .page_amis main,
+    body .page_profil_edit main{
+        width: 95vw;
+        margin: 0 auto;
+    }
+    body .page_amis main .content .content_row{
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    body .profil_page_container main .page_profil_profil{
+        min-height: 400px;
+    }
+    body .profil_page_container main .page_profil_profil .border{
+        display: none;
+        height: 0;
+    }
+    body .page_profil_profil .profil{
+        max-width: 125px;
+        margin: 0 auto; /* Centrer l'image horizontalement */
+        position: absolute;
+        top: 10px;
+        left: 0;
+     }
+     body .page_profil_profil .profil img{
+         height:125px;
+         width: 125px;
+         border-radius: 50%;
+         border: 5px solid white;
+     }
+    body .page_profil_profil .details{
+        position: absolute;
+        top: 50px;
+        left: 140px;
+    }
+    body .page_profil_profil .btn_modifier_profil{
+        position: absolute;
+        top: 160px;
+        left: 0;
+      
+    }
+    body .page_profil_profil .btn_suivre{
+        position: absolute;
+        top: 240px;
+        left: 0;
+      
+    }
+    body .page_profil_profil .btn_stop_suivre{
+        position: absolute;
+        top: 240px;
+        left: 0;
+    }
+    body .page_profil_profil .btn_ajouter{
+        position: absolute;
+        top: 240px;
+        left: 240px;
+    }
+    body .page_profil_profil .btn_pending_ami{
+        position: absolute;
+        top: 240px;
+        left: 240px;
+    }
+    body .page_profil_profil .btn_stop_ajouter{
+        position: absolute;
+        top: 240px;
+        left: 240px;
+    }
+    
+    body .page_profil_profil .btn_envoyer_msg_profil{
+        position: absolute;
+        top: 160px;
+        left: 0;
+    }
+    
+    body .page_profil_profil .page_profil_menu{
+        top: 345px;
+    }
+    body .content_container main .fil .post_wrapper .icones_container,
+    body .page_profil_main .right_section .page_profil_fil .post_wrapper .icones_container{
+        margin-right: 0;
+    }
+    body .content_container main .fil .post_wrapper .section_commentaire .icones_container_commentaire
+    body .content_container main .fil .post_wrapper .section_commentaire .section_reponse .icones_container_commentaire{
+        margin: 0 auto;
+        transform: translateX(0);
+    }
+    body .page_profil_main .right_section .page_profil_fil .post_wrapper .section_commentaire .icones_container_commentaire{
+        margin: 0 auto;
+    }
+
+   
+    
+}
+
+
+
+/**************************************************************************************************************************************************************************************************/
+@keyframes  rechercher {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.3);
+    }
+    100%{
+        transform: scale(1);
+    }
+}

@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=Imprima&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+:root{
+    --main-color: #DC9FCF;
+    --main-medium: #C18BB5;
+    --main-darker: #6E5068;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Imprima', sans-serif;
+}
+/*-------------------------------------------------------------------------------Menu Header-------------------------------------------------------------------------*/
+header{
+    height: 185px;
+    width: 100vw;
+    background-color: var(--main-color);
+    color: white;
+    border-bottom-left-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+   
+}
+header  h1 {
+    transform: translateX(3vw);
+    font-family: 'Gamja Flower', cursive;
+    font-size: 64px;
+}
+header form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    font-size: 24px;
+}
+header form > button{
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    transform: translateX(-5vw) translateY(20px);
+    height: 60px;
+    width: 180px;
+    border-radius: 50px;
+    background-color: var(--main-darker);
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    transition: all .3s;
+}
+header form > button:hover{
+    background-color: white;
+    color:var(--main-darker);
+    border: 2px solid var(--main-darker);
+}
+header .mdp_container,
+header .pseudo_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-10vw);
+    gap: 15px;
+}
+header .mdp_container > input,
+header .pseudo_container > input {
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    height: 60px;
+    width: 240px;
+    border-radius: 50px;
+    background-color: white;
+    font-size: 24px;
+    color: var(--main-darker);
+    text-align: center;
+}
+
+header .mdp_container > input:focus,
+header .pseudo_container > input:focus {
+    border: 2px solid var(--main-darker);
+}
+header .reset_mdp{
+    position: absolute;
+    top: 20px;
+    right: 4vw;
+    color: white;
+    text-decoration: none;
+}
+/*-------------------------------------------------------------------------------Page Principale-------------------------------------------------------------------------*/
+.main_container{
+    display: flex;
+}
+.main_container .home_left,
+.main_container .home_right{
+    width: 50vw;
+    min-height: calc(100vh - 185px); /*hauteur totale moins hauteur header*/
+}
+.main_container .home_left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main_container .home_right{
+    background-color: var(--main-darker);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+}
+.main_container .home_right > h2{
+    color: white;
+    min-height: 165px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 40px;
+}
+.main_container .home_right > form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    font-size: 24px;
+}
+.main_container .home_right > form label[for="pseudo"]::after,
+.main_container .home_right > form label[for="mdp"]::after,
+.main_container .home_right > form label[for="mdp_v"]::after,
+.main_container .home_right > form label[for="mail"]::after{
+    content: '*'; /* Le contenu à afficher (ici l'astérisque) */
+    color: white; 
+    margin-left: 5px; 
+}
+.main_container .home_right > form .error{
+    position: absolute;
+    font-size: 16px;
+    top: 0;
+    left: 5px;
+    color: red;
+}
+.main_container .home_right > form .civil,
+.main_container .home_right > form .coordonnees,
+.main_container .home_right > form .mdp{
+    background-color: var(--main-medium);
+    /* min-height: 25%; */
+    min-width: 90%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+.main_container .home_right > form .rgpd_container{
+    padding: 0 70px;
+}
+.main_container .home_right > form .rgpd_container a{
+    text-decoration: none;
+    color: var(--main-color);
+}
+.main_container .home_right > form .form_row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2px;
+}
+
+.main_container .home_right > form .form_row label {
+    text-align: left;
+    flex: 0 0 30%; /* Ajustez la valeur en fonction de la longueur du label */
+}
+
+.main_container .home_right > form .form_row input {
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    height: 30px;
+    border-radius: 1.5em;
+    flex: 0 0 70%; /* Ajustez la valeur en fonction de la longueur de l'input */
+    background-color: white;
+    font-size: 24px;
+    color: var(--main-darker);
+    text-align: center;
+}
+
+.main_container .home_right > form .form_row input:focus {
+    border: 2px solid var(--main-darker);
+}
+.main_container .home_right > form .form_row select{
+     /* Réinitialiser les styles */
+     appearance: none;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     outline: none;
+     box-shadow: none;
+     border-radius: 0;
+     border: none;
+     padding: 0;
+     margin: 0;
+     /**/
+     height: 30px;
+     border-radius: 1.5em;
+     flex: 0 0 70%; /* Ajustez la valeur en fonction de la longueur du select */
+     background-color: white;
+     font-size: 24px;
+     color: var(--main-darker);
+     text-align: center;
+}
+.main_container .home_right > form .form_row select option{
+    text-align: center;
+}
+.main_container .home_right > form button[type="submit"]{
+    /* Réinitialiser les styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /**/
+    height: 60px;
+    width: 180px;
+    border-radius: 50px;
+    background-color: var(--main-color);
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    transition: all .3s;
+}
+.main_container .home_right > form button[type="submit"]:hover{
+    background-color: white;
+    color:var(--main-color);
+    border: 2px solid var(--main-color);
+}
+
+
+
+/* ... Autres styles ... */
+.animation-container{
+    transform: translateY(-185px);
+    position: absolute;
+    z-index: 999;
+}
+.animation-container .top-side{
+    height: 30vh;
+    width: 100vw;
+    background-color: black;
+    animation: top_anim 0.7s 0.5s ease forwards;
+}
+.animation-container .middle{
+    height: 40vh;
+    width: 100vw;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: middle_anim 0.7s 0.5s ease forwards, middle_anim2 0.1s 1.2s ease forwards;
+}
+.animation-container .middle span{
+    display: block;
+    color: var(--main-color);
+    font-family: 'Gamja Flower', cursive;
+    font-size: 128px;
+}
+.animation-container .bottom-side{
+    height: 30vh;
+    width: 100vw;
+    background-color: black;
+    animation: bottom_anim 0.7s 0.5s ease forwards;
+}
+
+
+@keyframes top_anim {
+    0% {
+        height: 30vh; 
+    }
+    50% {
+        height: 50vh;
+    }
+    100%{
+        height: 0vh;
+    }
+}
+@keyframes middle_anim {
+    0% {
+        height: 40vh; 
+    }
+    50% {
+        height: 0vh; 
+        opacity: 1;
+    }
+    100%{
+        height: 100vh; 
+        opacity: 0;
+    }
+}
+@keyframes middle_anim2 {
+    0%{
+        height: 100vh; 
+        opacity: 0;
+    }
+    100%{
+        height: 0vh; 
+        opacity: 0;
+    }
+}
+@keyframes bottom_anim {
+    0% {
+        height: 30vh; 
+    }
+    50% {
+        height: 50vh; 
+    }
+    100%{
+        height: 0vh;
+    }
+}
+/********************************************************************************************Media queries ****************************************************************************************/
+@media (max-width: 1250px) {
+    body header .site_name{
+        display: none;
+    }
+    body header form{
+        margin: 0 auto;
+    }
+    body header form .pseudo_container,
+    body header form .mdp_container,
+    body header form button{
+        transform: translate(0);
+    }
+    body header .reset_mdp{
+        position: relative;
+        transform: translateX(30px);
+    }
+    body header{
+        height: auto;
+    }
+    body header form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+    .animation-container{
+        display: none;
+        z-index: -999;
+    }
+    .animation-container .top-side{
+        animation: none;
+    }
+    .animation-container .middle{
+        animation: none;
+    }
+    .animation-container .middle span{
+        animation: none;
+    }
+    .animation-container .bottom-side{
+        animation: none;
+    }
+}
+
+@media (max-width: 1600px) {
+    body .main_container .home_left{
+        width: 0;
+        display: none;
+    }
+    body .main_container .home_right{
+        width: 95vw;
+        margin: 0 auto;
+    }
+}
