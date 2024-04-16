@@ -197,7 +197,7 @@ public function signup()
             $this->email->to($_POST["mail"]);
 
             $this->email->subject('Récupération de mdp');
-            $this->email->message('Voici votre lien de récupération de mdp <a target="_blank" href="http://localhost/ProjetX/User/set_new_mdp/' . $temp . '">Lien =)</a> .');
+            $this->email->message('Voici votre lien de récupération de mdp <a target="_blank" href="'.base_url().'/User/set_new_mdp/' . $temp . '">Lien =)</a> .');
 
             $this->email->send();
             // $this->email->print_debugger();
@@ -309,13 +309,13 @@ public function signup()
                 else {
                     $this->usersManager->_update(array('usr_id' => $this->session->userdata('usr_id')), array('usr_pseudo' => $_POST['usr_pseudo'], 'usr_nom' => $_POST['usr_nom'], 'usr_prenom' => $_POST['usr_prenom'], 'usr_cp' => $_POST['usr_cp'], 'usr_adresse' => $_POST['usr_adresse'], 'usr_ville' => $_POST['usr_ville'], 'usr_mail' => $_POST['usr_mail'], 'usr_tel' => $_POST['usr_tel']));
                     echo 'Modifications prises en compte, vous allez être redirigé vers la page de connexion.';
-                    header('Refresh: 5; URL="/ProjetX/User/deconnexion"');
+                    header('Refresh: 5; URL="/User/deconnexion"');
                     exit();
                 }
             } else {
                 $this->usersManager->_update(array('usr_id' => $this->session->userdata('usr_id')), array('usr_pseudo' => $_POST['usr_pseudo'], 'usr_nom' => $_POST['usr_nom'], 'usr_prenom' => $_POST['usr_prenom'], 'usr_cp' => $_POST['usr_cp'], 'usr_adresse' => $_POST['usr_adresse'], 'usr_ville' => $_POST['usr_ville'], 'usr_mail' => $_POST['usr_mail'], 'usr_tel' => $_POST['usr_tel']));
                 echo 'Modifications prises en compte, vous allez être redirigé vers la page de connexion.';
-                header('Refresh: 5; URL="/ProjetX/User/deconnexion"');
+                header('Refresh: 5; URL="/User/deconnexion"');
                 exit();
             }
         }

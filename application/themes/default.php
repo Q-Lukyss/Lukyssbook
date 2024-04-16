@@ -7,13 +7,13 @@
     <link rel="shortcut icon" href="<?= site_url("assets/img/embleme-02.png") ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?= site_url("assets/css/default.css") ?>">
     <!-- font -->
-    <link href="/ProjetX/assets/fileuploader//dist/font/font-fileuploader.css" media="all" rel="stylesheet">
+    <link href="/assets/fileuploader//dist/font/font-fileuploader.css" media="all" rel="stylesheet">
     <!-- css -->
-    <link href="/ProjetX/assets/fileuploader//dist/jquery.fileuploader.min.css" media="all" rel="stylesheet">
+    <link href="/assets/fileuploader//dist/jquery.fileuploader.min.css" media="all" rel="stylesheet">
 
     <!-- js -->
     <script src="//code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
-    <script src="/ProjetX/assets/fileuploader/dist/jquery.fileuploader.min.js" type="text/javascript"></script>
+    <script src="/assets/fileuploader/dist/jquery.fileuploader.min.js" type="text/javascript"></script>
     <title><?= $titre ?></title>
     <meta name="description" content="<?= $desc ?>">
     <link rel="canonical" href="<?= site_url("User/") ?>" />

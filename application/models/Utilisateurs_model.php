@@ -104,11 +104,11 @@ class Utilisateurs_model extends MY_Model
         $this->db->update($this->table);
 
         if ($this->db->affected_rows() > 0) {
-            header('Refresh: 1, url="/ProjetX/User/"');
+            header('Refresh: 1, url="/User/"');
             echo "Demande prise en compte";
             // redirect("User/", 2);
         } else {
-            header('Refresh: 1, url="/ProjetX/User/"');
+            header('Refresh: 1, url="/User/"');
             echo "Une erreur s'est produite";
         }
     }
@@ -120,11 +120,11 @@ class Utilisateurs_model extends MY_Model
         $this->db->update($this->table);
 
         if ($this->db->affected_rows() > 0) {
-            header('Refresh: 1, url="/ProjetX/User/"');
+            header('Refresh: 1, url="/User/"');
             echo "Changement de mot de passe effectué";
             // redirect("User/", 2);
         } else {
-            header('Refresh: 1, url="/ProjetX/User/"');
+            header('Refresh: 1, url="/User/"');
             echo "Une Erreur s'est produite";
         }
     }

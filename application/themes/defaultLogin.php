@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/ProjetX/assets/img/embleme-02.png" type="image/x-icon">
-    <link rel="stylesheet" href="/ProjetX/assets/css/defaultLogin.css">
+    <link rel="shortcut icon" href="/assets/img/embleme-02.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/css/defaultLogin.css">
     <title><?= $titre ?></title>
     <meta name="description" content="<?= $desc ?>">
 </head>
@@ -96,7 +96,7 @@
                 }
             };
             //On veut récupérer des infos du serveur donc GET
-            xhr.open("GET", "/ProjetX/assets/ressources/laposte_hexasmal.json", true);
+            xhr.open("GET", "/assets/ressources/laposte_hexasmal.json", true);
             xhr.send();
         }
     
