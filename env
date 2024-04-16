@@ -1,0 +1,10 @@
+# Configuration de l'application
+APP_PORT=8100
+
+# Configuration de la base de données
+DB_HOST=db
+DB_PORT=33066
+DB_ROOT_PASSWORD=root
+DB_DATABASE=lukyssbook
+DB_USERNAME=lukyss
+DB_PASSWORD=lukyss
