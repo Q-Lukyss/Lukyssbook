@@ -12,7 +12,8 @@ L'application a été préparée pour fonctionner avec Docker, mais peut égalem
 
 1. Renommez le fichier `env` en `.env`.
 2. Modifiez les variables d'environnement selon vos besoins.
-3. Exécutez l'application dans Docker avec la commande suivante:
+3. Modifier le base url dans application/config/config.php pour correspondre à la variable d'environement de l'application
+4. Exécutez l'application dans Docker avec la commande suivante:
 
 ```
 docker compose up --build
