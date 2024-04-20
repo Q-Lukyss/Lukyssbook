@@ -349,7 +349,7 @@ header .reset_mdp{
     }
 }
 /********************************************************************************************Media queries ****************************************************************************************/
-@media (max-width: 1250px) {
+@media (max-width: 900px) {
     body header .site_name{
         display: none;
     }
@@ -392,9 +392,6 @@ header .reset_mdp{
     .animation-container .bottom-side{
         animation: none;
     }
-}
-
-@media (max-width: 1600px) {
     body .main_container .home_left{
         width: 0;
         display: none;
@@ -404,3 +401,14 @@ header .reset_mdp{
         margin: 0 auto;
     }
 }
+
+/* @media (max-width: 1600px) {
+    body .main_container .home_left{
+        width: 0;
+        display: none;
+    }
+    body .main_container .home_right{
+        width: 95vw;
+        margin: 0 auto;
+    }
+} */
