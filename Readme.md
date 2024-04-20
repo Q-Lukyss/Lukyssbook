@@ -1,24 +1,31 @@
-# LukyssBook
+# Configuration Nginx pour LukyssBook
 
-## Contexte
+## Prérequis
 
-Ceci est un clone de Facebook simplifié réalisé dans le cadre du titre professionnel développeur web et web mobile 
-pour la session Octobre 2023 à Reims.
+Ce guide est destiné aux utilisateurs ayant déjà installé Docker et Docker Compose. Une connaissance de base de Nginx et Docker est également recommandée.
 
 ## Configuration
 
-Cette application a été dockerisé, elle peut également être utililée avec un stack type xamp mais je n'entrerai pas ici dans la 
-configuration détaillée.
+### Installation
 
-Renommer le fichier 
+1. Clonez la branche Nginx du dépôt:
 ```
-env
+git clone -b nginx https://github.com/Q-Lukyss/Lukyssbook.git
 ```
-en 
+2. Accédez au répertoire du projet:
 ```
-.env
+cd LukyssBook
 ```
-Modifier les variables d'environements selon votre convenance et lancer dans docker avec la commande 
+### Configuration des variables d'environnement
+
+1. Renommez le fichier `env` en `.env`.
+2. Ouvrez le fichier `.env` et ajustez les variables d'environnement selon vos besoins.
+3. Modifier le base url dans application/config/config.php pour correspondre à la variable d'environement de l'application
+
+### Démarrage de l'application
+
+Lancez l'application en utilisant Docker Compose:
 ```
 docker compose up --build
 ```
+Votre application LukyssBook devrait maintenant être servie via Nginx sur le port défini dans votre fichier `.env`. Assurez-vous que ce port est ouvert et accessible sur votre réseau local ou externe, selon vos besoins.
